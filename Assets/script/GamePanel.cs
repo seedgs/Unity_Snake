@@ -54,7 +54,7 @@ public class GamePanel : MonoBehaviour
 
     private void EndOnDrag(BaseEventData data)
     {
-        ImgJoy.anchoredPosition = Vector2.zero;
+        ImgJoy.anchoredPosition = new Vector2(-206, -348);
 
         //停止移动 
         player.Move(Vector2.zero);
