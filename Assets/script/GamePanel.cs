@@ -5,7 +5,6 @@ using UnityEngine.EventSystems;
 
 public class GamePanel : MonoBehaviour
 {
-    
     public EventTrigger et;
     public RectTransform ImgJoy;
     private PlayerObject player;
@@ -43,11 +42,11 @@ public class GamePanel : MonoBehaviour
         ImgJoy.localPosition = NowPos;
 
         //我们有专门的参数  得到相对于锚点的点，这里的120是指Joy中心点距离外圆的边缘距离 防止摇杆出去
-        if (ImgJoy.anchoredPosition.magnitude > 70)
+        if (ImgJoy.anchoredPosition.magnitude > 120)
         {
             //拉回来
             //单位向量 * 长度 = 临界长度
-            ImgJoy.anchoredPosition = ImgJoy.anchoredPosition.normalized * 70;
+            ImgJoy.anchoredPosition = ImgJoy.anchoredPosition.normalized * 120;
         }
         //让玩家移动
         player.Move(ImgJoy.anchoredPosition);
@@ -55,9 +54,11 @@ public class GamePanel : MonoBehaviour
 
     private void EndOnDrag(BaseEventData data)
     {
-        ImgJoy.localPosition = new Vector2(-224, -371);
+        ImgJoy.anchoredPosition = Vector2.zero;
+
         //停止移动 
         player.Move(Vector2.zero);
     }
 
 }
+
